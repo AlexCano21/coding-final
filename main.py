@@ -1,54 +1,79 @@
-#Importing submodules 
-from graphics import *
+##################################################################
+
+# v v v    [Importing submodules]    v v v 
+
+#Importing tk 
+import tkinter
+import tkinter as tk
+from tkinter import tix
+from tkinter import *
+from tkinter.constants import *
+root = tix.Tk()
+from tkinter import Button 
+root.title("Factory Game")
+
+#Import time 
 import time
+
+#Importing call and random integer 
 from subprocess import call
 from random import randint  
+
+##################################################################
 
 #Clearing the command line
 call('cls', shell=True)
 
-#Variables
-greetingText="Hello, welcome to [Name Goes Here]!"
-x=0
-y=0
+##################################################################
 
-#Making the first Screen
-def main():
-    #Makes the window pop up with a name, and how large in pixels it is (width, height)
-    win = GraphWin("[Name Goes Here]", 500, 400)
-    #Set Background
-    win.setBackground(color_rgb(255,255,255))
+# v v v    [Variables]    v v v 
 
-    #Calls Image
-    homeImage = Image(Point(0,0), "blank.png")
-    homeImage.draw(win)
+#Stage: What stage you are at in your factory
+with open('save.txt', 'r') as f:
+	stage = f.readlines(1)
+	pass
 
-    #Displays the greeting text
-    greeting = Text(Point(250,300), greetingText) #Calls variable instead of putting text here
-    greeting.setTextColor(color_rgb(0,0,0))
-    greeting.setSize(15)
-    greeting.setFace('arial')
-    greeting.draw(win)
+##################################################################
 
-    #Little bit of fun 
-    i=1
-    while True== True:
-        print(i)
-        i += 1
-        l=randint(1,4)
-        x=randint(1,500)
-        y=randint(1,400)
-        if l==1:
-            c='black'
-        elif l==2:
-            c='black'
-        elif l==3:
-            c='black'
-        else:
-            c='blue'
-        win.plot(x, y, c)
+# v v v    [Commands]    v v v
 
-    win.getMouse() #Pause before closing
-main()
+#When this command is called it switches to the actual game
+def switchToGame():
+    #These two functions hide the title screen labels 
+    titleLabel.pack_forget()
+    authorsLabel.pack_forget()
 
+    #Creating the leave button 
+    leaveGame = Button(root, text="Leave Game", command=leaveGame)
+    leaveGame.place(relx=0.85, rely=0.9, anchor="nw")
 
+    root.configure(background='black')
+
+def leaveGame():
+    print("lol")
+
+##################################################################
+
+# v v v    [Making the intro screen]    v v v 
+
+#Setting window wdith and heigth, and background color
+root.geometry("500x300")
+root.configure(background='black')
+
+#Title Text
+titleLabel = tk.Label(root, text='Factory Game', font=("Arial", 11), fg="white", bg="black")
+titleLabel.place(relx=0.5, rely=0.4, anchor='center')
+titleLabel.pack()
+
+#Author Name Text
+authorsLabel = tk.Label(root, text='By Alex C. and Benjamin B.', font=("Arial", 9), fg="white", bg="black")
+authorsLabel.place(relx=0.5, rely=0.5, anchor='center')
+authorsLabel.pack()
+
+#Switches to the game screen by activating command
+switchToGame()
+
+##################################################################
+
+#Mainloop: This keeps the window open
+root.mainloop()
