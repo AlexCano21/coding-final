@@ -19,6 +19,9 @@ import time
 from subprocess import call
 from random import randint  
 
+#Importing system commands
+import sys
+
 ##################################################################
 
 #Clearing the command line
@@ -28,10 +31,27 @@ call('cls', shell=True)
 
 # v v v    [Variables]    v v v 
 
-#Stage: What stage you are at in your factory
+#This reads the save file and determines your progress
 with open('save.txt', 'r') as f:
-	stage = f.readlines(1)
-	pass
+    #This is what stage you are on
+    stage = f.readline()
+    #This is how mush coal you have in your inventory
+    coalInventory = f.readline()
+    #This is how mush iron you have in your inventory
+    ironInventory = f.readline()
+    #This is how mush gold you have in your inventory
+    goldInventory = f.readline()
+
+#Removes the newline character from the read lines
+coalInventory = coalInventory.strip("\n")
+ironInventory = ironInventory.strip("\n")
+goldInventory = goldInventory.strip("\n")
+
+#Prints out your game state (this is for debugging purposes)
+print("You are on stage: " + stage, end='')
+print("You have " + coalInventory + " coal")
+print("You have " + ironInventory + " iron")
+print("You have " + goldInventory + " gold")
 
 ##################################################################
 
@@ -39,9 +59,16 @@ with open('save.txt', 'r') as f:
 
 #When this command is called it switches to the actual game
 def switchToGame():
+    #This defines the leaveGame function which is the command of the button in this screen
+    def leaveGame():
+        #Saves what stage you are in the game
+
+        #Ends the python script
+        sys.exit()
+
     #These two functions hide the title screen labels 
-    titleLabel.pack_forget()
-    authorsLabel.pack_forget()
+    titleLabel.place_forget()
+    authorsLabel.place_forget()
 
     #Creating the leave button 
     leaveGame = Button(root, text="Leave Game", command=leaveGame)
@@ -49,8 +76,6 @@ def switchToGame():
 
     root.configure(background='black')
 
-def leaveGame():
-    print("lol")
 
 ##################################################################
 
@@ -63,15 +88,13 @@ root.configure(background='black')
 #Title Text
 titleLabel = tk.Label(root, text='Factory Game', font=("Arial", 11), fg="white", bg="black")
 titleLabel.place(relx=0.5, rely=0.4, anchor='center')
-titleLabel.pack()
 
 #Author Name Text
 authorsLabel = tk.Label(root, text='By Alex C. and Benjamin B.', font=("Arial", 9), fg="white", bg="black")
 authorsLabel.place(relx=0.5, rely=0.5, anchor='center')
-authorsLabel.pack()
 
 #Switches to the game screen by activating command
-switchToGame()
+#switchToGame()
 
 ##################################################################
 
