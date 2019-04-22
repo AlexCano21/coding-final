@@ -41,6 +41,7 @@ with open('save.txt', 'r') as f:
     ironInventory = f.readline()
     #This is how mush gold you have in your inventory
     goldInventory = f.readline()
+    pass
 
 #Removes the newline character from the read lines
 coalInventory = coalInventory.strip("\n")
@@ -62,17 +63,54 @@ def switchToGame():
     #This defines the leaveGame function which is the command of the button in this screen
     def leaveGame():
         #Saves what stage you are in the game
-
+        with open('save.txt', 'w') as f:
+            global coalInventory
+            global ironInventory
+            global goldInventory
+            coalInventory = str(coalInventory)
+            ironInventory = str(ironInventory)
+            goldInventory = str(goldInventory)
+            f.write(stage)
+            f.write(coalInventory + '\n')
+            f.write(ironInventory + '\n')
+            f.write(goldInventory + '\n')
+            pass
+          
         #Ends the python script
         sys.exit()
+
+    #All of these commands are for the testing buttons
+    def addCoal():
+        global coalInventory
+        coalInventory = int(coalInventory)
+        coalInventory = coalInventory + 1
+        print(coalInventory)
+    def addIron():
+        global ironInventory
+        ironInventory = int(ironInventory)
+        ironInventory = ironInventory + 1
+        print(ironInventory)
+    def addGold():
+        global goldInventory
+        goldInventory = int(goldInventory)
+        goldInventory = goldInventory + 1
+        print(goldInventory)
 
     #These two functions hide the title screen labels 
     titleLabel.place_forget()
     authorsLabel.place_forget()
 
     #Creating the leave button 
-    leaveGame = Button(root, text="Leave Game", command=leaveGame)
+    leaveGame = Button(root, text="Leave Game", bg='black', fg='white', command=leaveGame)
     leaveGame.place(relx=0.85, rely=0.9, anchor="nw")
+
+    #Buttons for testing out 
+    addCoal = Button(root, text="Add Coal", bg='black', fg='white', command=addCoal)
+    addIron = Button(root, text="Add Iron", bg='black', fg='white', command=addIron)
+    addGold = Button(root, text="Add Gold", bg='black', fg='white', command=addGold)
+    addCoal.place(x=100, y=100)
+    addIron.place(x=100, y=130)
+    addGold.place(x=100, y=160)
 
     root.configure(background='black')
 
@@ -94,7 +132,7 @@ authorsLabel = tk.Label(root, text='By Alex C. and Benjamin B.', font=("Arial", 
 authorsLabel.place(relx=0.5, rely=0.5, anchor='center')
 
 #Switches to the game screen by activating command
-#switchToGame()
+switchToGame()
 
 ##################################################################
 
