@@ -48,12 +48,6 @@ coalInventory = coalInventory.strip("\n")
 ironInventory = ironInventory.strip("\n")
 goldInventory = goldInventory.strip("\n")
 
-#Prints out your game state (this is for debugging purposes)
-print("You are on stage: " + stage, end='')
-print("You have " + coalInventory + " coal")
-print("You have " + ironInventory + " iron")
-print("You have " + goldInventory + " gold")
-
 ##################################################################
 
 # v v v    [Commands]    v v v
@@ -64,12 +58,15 @@ def switchToGame():
     def leaveGame():
         #Saves what stage you are in the game
         with open('save.txt', 'w') as f:
+            #This makes all the saveable variables global 
             global coalInventory
             global ironInventory
             global goldInventory
+            #This makes all the save variables into strings
             coalInventory = str(coalInventory)
             ironInventory = str(ironInventory)
             goldInventory = str(goldInventory)
+            #This writes to the save files
             f.write(stage)
             f.write(coalInventory + '\n')
             f.write(ironInventory + '\n')
@@ -96,9 +93,36 @@ def switchToGame():
         goldInventory = goldInventory + 1
         print(goldInventory)
 
+    #This command opens the inventory
+    def openInventory():
+        #This clears the command line
+        call('cls', shell=True)
+
+        #This prints what stage you are on and the inventory
+        print("You are on stage: " + stage, end='')
+        print("You have " + coalInventory + " coal")
+        print("You have " + ironInventory + " iron")
+        print("You have " + goldInventory + " gold")
+
+    #This command opens the store
+    def openStore():
+        #This clears the command line
+        call('cls', shell=True)
+
+        #Prints the store
+        print("Welcome to the store!")
+    
     #These two functions hide the title screen labels 
     titleLabel.place_forget()
     authorsLabel.place_forget()
+
+    #This makes the buttton to open inventory
+    openCommand = Button(root, text="Open inventory", bg='black', fg='white', command=openInventory)
+    openCommand.place(x=330, y=270)
+
+    #This makes the button to open store
+    openStore = Button(root, text="Open Store", bg='black', fg='white', command=openStore)
+    openStore.place(x=258, y=270)
 
     #Creating the leave button 
     leaveGame = Button(root, text="Leave Game", bg='black', fg='white', command=leaveGame)
@@ -131,8 +155,8 @@ titleLabel.place(relx=0.5, rely=0.4, anchor='center')
 authorsLabel = tk.Label(root, text='By Alex C. and Benjamin B.', font=("Arial", 9), fg="white", bg="black")
 authorsLabel.place(relx=0.5, rely=0.5, anchor='center')
 
-#Switches to the game screen by activating command
-switchToGame()
+#Switches to the game screen by activating command after 3 seconds
+titleLabel.after(1500, switchToGame)
 
 ##################################################################
 
