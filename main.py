@@ -43,6 +43,9 @@ with open('save.txt', 'r') as f:
     goldInventory = f.readline()
     pass
 
+#This is how long the title screen stays up
+titleScreenTime = 1500
+
 #Removes the newline character from the read lines
 coalInventory = coalInventory.strip("\n")
 ironInventory = ironInventory.strip("\n")
@@ -81,17 +84,20 @@ def switchToGame():
         global coalInventory
         coalInventory = int(coalInventory)
         coalInventory = coalInventory + 1
-        print(coalInventory)
+        coalInventory = str(coalInventory)
+        openInventory()
     def addIron():
         global ironInventory
         ironInventory = int(ironInventory)
         ironInventory = ironInventory + 1
-        print(ironInventory)
+        ironInventory = str(ironInventory)
+        openInventory()
     def addGold():
         global goldInventory
         goldInventory = int(goldInventory)
         goldInventory = goldInventory + 1
-        print(goldInventory)
+        goldInventory = str(goldInventory)
+        openInventory()
 
     #This command opens the inventory
     def openInventory():
@@ -126,7 +132,7 @@ def switchToGame():
 
     #Creating the leave button 
     leaveGame = Button(root, text="Leave Game", bg='black', fg='white', command=leaveGame)
-    leaveGame.place(relx=0.85, rely=0.9, anchor="nw")
+    leaveGame.place(x=425, y=270)
 
     #Buttons for testing out 
     addCoal = Button(root, text="Add Coal", bg='black', fg='white', command=addCoal)
@@ -155,8 +161,8 @@ titleLabel.place(relx=0.5, rely=0.4, anchor='center')
 authorsLabel = tk.Label(root, text='By Alex C. and Benjamin B.', font=("Arial", 9), fg="white", bg="black")
 authorsLabel.place(relx=0.5, rely=0.5, anchor='center')
 
-#Switches to the game screen by activating command after 3 seconds
-titleLabel.after(1500, switchToGame)
+#Switches to the game screen by activating command after time on titleScreenTime variable passes
+titleLabel.after(titleScreenTime, switchToGame)
 
 ##################################################################
 
