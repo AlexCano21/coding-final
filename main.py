@@ -39,8 +39,8 @@ with open('save.txt', 'r') as f:
     coalInventory = f.readline()
     #This is how mush iron you have in your inventory
     ironInventory = f.readline()
-    #This is how mush gold you have in your inventory
-    goldInventory = f.readline()
+    #This is how mush copper you have in your inventory
+    copperInventory = f.readline()
     pass
 
 #This is how long the title screen stays up
@@ -49,7 +49,7 @@ titleScreenTime = 1500
 #Removes the newline character from the read lines
 coalInventory = coalInventory.strip("\n")
 ironInventory = ironInventory.strip("\n")
-goldInventory = goldInventory.strip("\n")
+copperInventory = copperInventory.strip("\n")
 
 ##################################################################
 
@@ -64,16 +64,16 @@ def switchToGame():
             #This makes all the saveable variables global 
             global coalInventory
             global ironInventory
-            global goldInventory
+            global copperInventory
             #This makes all the save variables into strings
             coalInventory = str(coalInventory)
             ironInventory = str(ironInventory)
-            goldInventory = str(goldInventory)
+            copperInventory = str(copperInventory)
             #This writes to the save files
             f.write(stage)
             f.write(coalInventory + '\n')
             f.write(ironInventory + '\n')
-            f.write(goldInventory + '\n')
+            f.write(copperInventory + '\n')
             pass
           
         #Ends the python script
@@ -92,11 +92,11 @@ def switchToGame():
         ironInventory = ironInventory + 1
         ironInventory = str(ironInventory)
         openInventory()
-    def addGold():
-        global goldInventory
-        goldInventory = int(goldInventory)
-        goldInventory = goldInventory + 1
-        goldInventory = str(goldInventory)
+    def addCopper():
+        global copperInventory
+        copperInventory = int(copperInventory)
+        copperInventory = copperInventory + 1
+        copperInventory = str(copperInventory)
         openInventory()
 
     #This command opens the inventory
@@ -108,7 +108,7 @@ def switchToGame():
         print("You are on stage: " + stage, end='')
         print("You have " + coalInventory + " coal")
         print("You have " + ironInventory + " iron")
-        print("You have " + goldInventory + " gold")
+        print("You have " + copperInventory + " copper")
 
     #This command opens the store
     def openStore():
@@ -137,10 +137,10 @@ def switchToGame():
     #Buttons for testing out 
     addCoal = Button(root, text="Add Coal", bg='black', fg='white', command=addCoal)
     addIron = Button(root, text="Add Iron", bg='black', fg='white', command=addIron)
-    addGold = Button(root, text="Add Gold", bg='black', fg='white', command=addGold)
+    addCopper = Button(root, text="Add Copper", bg='black', fg='white', command=addCopper)
     addCoal.place(x=100, y=100)
     addIron.place(x=100, y=130)
-    addGold.place(x=100, y=160)
+    addCopper.place(x=100, y=160)
 
     root.configure(background='black')
 
