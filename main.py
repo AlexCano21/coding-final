@@ -78,7 +78,8 @@ def switchToGame():
           
         #Ends the python script
         sys.exit()
-
+    
+    
     #All of these commands are for the testing buttons
     def addCoal():
         global coalInventory
@@ -98,6 +99,7 @@ def switchToGame():
         copperInventory = copperInventory + 1
         copperInventory = str(copperInventory)
         openInventory()
+    
 
     #This command opens the inventory
     def openInventory():
@@ -118,6 +120,29 @@ def switchToGame():
         #Prints the store
         print("Welcome to the store!")
     
+    #Opening Crafting Interface
+    def craftInterface():
+        craft = tix.Tk()
+        print(ironInventory)
+        #Defining all Crafting Functions
+        def craftIronGears(ironInventory):
+            ironInventory = int(ironInventory)
+            if ironInventory > 4:
+                ironInventory = ironInventory - 4
+                ironInventory = str(ironInventory)
+                print(ironInventory)
+                #openInventory()
+
+        #Defining closing of Crafting Interface
+        def closeWindow():
+            craft.destroy()
+        #Creating the close crafting button 
+        leaveCrafting = Button(craft, text="Close Crafting Window", bg='black', fg='white', command=closeWindow)
+        leaveCrafting.place(x=50, y=100)
+        craftIronGear = Button(craft, text="Craft Iron Gear", bg='black', fg='white', command= lambda: craftIronGears(ironInventory))
+        craftIronGear.place(x=50, y=50)
+        craft.mainloop
+    
     #These two functions hide the title screen labels 
     titleLabel.place_forget()
     authorsLabel.place_forget()
@@ -133,6 +158,10 @@ def switchToGame():
     #Creating the leave button 
     leaveGame = Button(root, text="Leave Game", bg='black', fg='white', command=leaveGame)
     leaveGame.place(x=425, y=270)
+
+    #Creating the Crafting button 
+    craftInterface = Button(root, text="Crafting", bg='black', fg='white', command=craftInterface)
+    craftInterface.place(x=100, y=270)
 
     #Buttons for testing out 
     addCoal = Button(root, text="Add Coal", bg='black', fg='white', command=addCoal)
