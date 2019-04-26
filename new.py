@@ -375,7 +375,6 @@ def furnaceTimer():
     updateCopperIngot(2, copperSmeltRate)
     updateIronIngot(2, ironSmeltRate)
         
-
 if __name__=='__main__':
     p1 = Process(target=loop)
     p1.start()
