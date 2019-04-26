@@ -78,26 +78,44 @@ def switchToGame():
           
         #Ends the python script
         sys.exit()
-
-    #All of these commands are for the testing buttons
-    def addCoal():
+    
+    
+    #Update Items amount, minplu determines if minus or plus(1=minus, 2=plus)
+    def updateCoal(minplu, amount):
         global coalInventory
         coalInventory = int(coalInventory)
-        coalInventory = coalInventory + 1
+        if minplu == 1:
+            coalInventory = coalInventory - amount
+        elif minplu == 2:
+            coalInventory = coalInventory + amount
+        else:
+            print("Error 01")
         coalInventory = str(coalInventory)
         openInventory()
-    def addIron():
+    
+    def updateIron(minplu, amount):
         global ironInventory
         ironInventory = int(ironInventory)
-        ironInventory = ironInventory + 1
+        if minplu == 1:
+            ironInventory = ironInventory - amount
+        elif minplu == 2:
+            ironInventory = ironInventory + amount
+        else:
+            print("Error 01")
         ironInventory = str(ironInventory)
         openInventory()
-    def addCopper():
+    def updateCopper(minplu, amount):
         global copperInventory
         copperInventory = int(copperInventory)
-        copperInventory = copperInventory + 1
+        if minplu == 1:
+            copperInventory = copperInventory - amount
+        elif minplu == 2:
+            copperInventory = copperInventory + amount
+        else:
+            print("Error 01")
         copperInventory = str(copperInventory)
         openInventory()
+    
 
     #This command opens the inventory
     def openInventory():
@@ -118,6 +136,25 @@ def switchToGame():
         #Prints the store
         print("Welcome to the store!")
     
+    #Opening Crafting Interface
+    def craftInterface():
+        craft = tix.Tk()
+        print(ironInventory)
+        #Defining all Crafting Functions
+        def craftIronGears():
+            updateIron(1,4)
+                        
+
+        #Defining closing of Crafting Interface
+        def closeWindow():
+            craft.destroy()
+        #Creating the close crafting button 
+        leaveCrafting = Button(craft, text="Close Crafting Window", bg='black', fg='white', command=closeWindow)
+        leaveCrafting.place(x=50, y=100)
+        craftIronGear = Button(craft, text="Craft Iron Gear", bg='black', fg='white', command=craftIronGears)
+        craftIronGear.place(x=50, y=50)
+        craft.mainloop
+    
     #These two functions hide the title screen labels 
     titleLabel.place_forget()
     authorsLabel.place_forget()
@@ -134,10 +171,14 @@ def switchToGame():
     leaveGame = Button(root, text="Leave Game", bg='black', fg='white', command=leaveGame)
     leaveGame.place(x=425, y=270)
 
+    #Creating the Crafting button 
+    craftInterface = Button(root, text="Crafting", bg='black', fg='white', command=craftInterface)
+    craftInterface.place(x=100, y=270)
+
     #Buttons for testing out 
-    addCoal = Button(root, text="Add Coal", bg='black', fg='white', command=addCoal)
-    addIron = Button(root, text="Add Iron", bg='black', fg='white', command=addIron)
-    addCopper = Button(root, text="Add Copper", bg='black', fg='white', command=addCopper)
+    addCoal = Button(root, text="Add Coal", bg='black', fg='white', command= lambda: updateCoal(2, 1))
+    addIron = Button(root, text="Add Iron", bg='black', fg='white', command= lambda: updateIron(2, 1))
+    addCopper = Button(root, text="Add Copper", bg='black', fg='white', command= lambda: updateCopper(2, 1))
     addCoal.place(x=100, y=100)
     addIron.place(x=100, y=130)
     addCopper.place(x=100, y=160)
