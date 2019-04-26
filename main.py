@@ -85,19 +85,24 @@ def switchToGame():
         global coalInventory
         coalInventory = int(coalInventory)
         if minplu == 1:
-            coalInventory = coalInventory - amount
+            if amount < coalInventory:
+                coalInventory = coalInventory - amount
+            else:
+                print("Temporary handling of not enough items")
         elif minplu == 2:
             coalInventory = coalInventory + amount
         else:
             print("Error 01")
         coalInventory = str(coalInventory)
         openInventory()
-    
     def updateIron(minplu, amount):
         global ironInventory
         ironInventory = int(ironInventory)
         if minplu == 1:
-            ironInventory = ironInventory - amount
+            if amount < ironInventory:
+                ironInventory = ironInventory - amount
+            else:
+                print("Temporary handling of not enough items")        
         elif minplu == 2:
             ironInventory = ironInventory + amount
         else:
@@ -108,7 +113,10 @@ def switchToGame():
         global copperInventory
         copperInventory = int(copperInventory)
         if minplu == 1:
-            copperInventory = copperInventory - amount
+            if amount < copperInventory:
+                copperInventory = copperInventory - amount
+            else:
+                print("Temporary handling of not enough items")
         elif minplu == 2:
             copperInventory = copperInventory + amount
         else:
