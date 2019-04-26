@@ -279,7 +279,12 @@ def switchToGame():
                 updateIronGear(2,1)
             else:
                 print("Error 02: Not enought items")
-                        
+        
+        def craftCircuit():
+            if updateCopperIngot(1,3) != "error":
+                updateCircuit(2,1)
+            else:
+                print("Error 02: Not enough items")                        
     
         #Defining closing of Crafting Interface
         def closeWindow():
@@ -289,6 +294,8 @@ def switchToGame():
         leaveCrafting.place(x=50, y=100)
         craftIronGear = Button(craft, text="Craft Iron Gear", bg='black', fg='white', command=craftIronGears)
         craftIronGear.place(x=50, y=50)
+        craftCircuit = Button(craft, text="Craft Circuit", bg='black', fg='white', command=craftCircuit)
+        craftCircuit.place(x=50, y=25)
         craft.mainloop
     
     #These two functions hide the title screen labels 
