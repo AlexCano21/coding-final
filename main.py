@@ -41,6 +41,37 @@ with open('save.txt', 'r') as f:
     ironInventory = f.readline()
     #This is how mush copper you have in your inventory
     copperInventory = f.readline()
+    #This is how mush iron ingots you have in your inventory
+    ironIngotInventory = f.readline()
+    #This is how mush copper ingots you have in your inventory
+    copperIngotInventory = f.readline()
+    #This is how mush iron gears you have in your inventory
+    ironGearInventory = f.readline()
+    #This is how mush steel ingots you have in your inventory
+    steelIngotInventory = f.readline()
+    #This is how mush circuits you have in your inventory
+    circuitInventory = f.readline()
+    #This is how mush advanced circuits you have in your inventory
+    advCircuitInventory = f.readline()
+    #This is how mush refined copper you have in your inventory
+    refinedCopperInventory = f.readline()
+    #This is how mush engines you have in your inventory
+    engineInventory = f.readline()
+    #This is how mush electric engines you have in your inventory
+    electricEngineInventory = f.readline()
+    #This is how mush processors you have in your inventory
+    processorInventory = f.readline()
+    #This is how mush computers you have in your inventory
+    computerInventory = f.readline()
+    #This is how mush iron plates you have in your inventory
+    ironPlateInventory = f.readline()
+    #This is how mush copper plates you have in your inventory
+    copperPlateInventory = f.readline()
+    #This is how mush steel plates you have in your inventory
+    steelPlateInventory = f.readline()
+    #This is how mush refined copper plates you have in your inventory
+    refinedCopperPlateInventory = f.readline()
+
     pass
 
 #This is how long the title screen stays up
@@ -50,6 +81,21 @@ titleScreenTime = 1500
 coalInventory = coalInventory.strip("\n")
 ironInventory = ironInventory.strip("\n")
 copperInventory = copperInventory.strip("\n")
+ironIngotInventory = ironIngotInventory.strip("\n")
+copperIngotInventory = copperIngotInventory.strip("\n")
+ironGearInventory = ironGearInventory.strip("\n")
+steelIngotInventory = steelIngotInventory.strip("\n")
+circuitInventory = circuitInventory.strip("\n")
+advCircuitInventory = advCircuitInventory.strip("\n")
+refinedCopperInventory = refinedCopperInventory.strip("\n")
+engineInventory = engineInventory.strip("\n")
+electricEngineInventory = electricEngineInventory.strip("\n")
+processorInventory = processorInventory.strip("\n")
+computerInventory = computerInventory.strip("\n")
+ironPlateInventory = ironPlateInventory.strip("\n")
+copperPlateInventory = copperPlateInventory.strip("\n")
+steelPlateInventory = steelPlateInventory.strip("\n")
+refinedCopperPlateInventory = refinedCopperPlateInventory.strip("\n")
 
 ##################################################################
 
@@ -65,15 +111,60 @@ def switchToGame():
             global coalInventory
             global ironInventory
             global copperInventory
+            global ironIngotInventory
+            global copperIngotInventory
+            global ironGearInventory
+            global steelIngotInventory
+            global circuitInventory
+            global advCircuitInventory
+            global refinedCopperInventory
+            global engineInventory
+            global electricEngineInventory
+            global processorInventory
+            global computerInventory
+            global ironPlateInventory
+            global copperPlateInventory
+            global steelPlateInventory
+            global refinedCopperPlateInventory
             #This makes all the save variables into strings
             coalInventory = str(coalInventory)
             ironInventory = str(ironInventory)
             copperInventory = str(copperInventory)
+            ironIngotInventory = str(ironIngotInventory)
+            copperIngotInventory = str(copperIngotInventory)
+            ironGearInventory = str(ironGearInventory)
+            steelIngotInventory = str(steelIngotInventory)
+            circuitInventory = str(circuitInventory)
+            advCircuitInventory = str(advCircuitInventory)
+            refinedCopperInventory = str(refinedCopperInventory)
+            engineInventory = str(engineInventory)
+            electricEngineInventory = str(electricEngineInventory)
+            processorInventory = str(processorInventory)
+            computerInventory = str(computerInventory)
+            ironPlateInventory = str(ironPlateInventory)
+            copperPlateInventory = str(copperPlateInventory)
+            steelPlateInventory = str(steelPlateInventory)
+            refinedCopperPlateInventory = str(refinedCopperPlateInventory)
             #This writes to the save files
             f.write(stage)
             f.write(coalInventory + '\n')
             f.write(ironInventory + '\n')
             f.write(copperInventory + '\n')
+            f.write(ironIngotInventory + '\n')
+            f.write(copperIngotInventory + '\n')
+            f.write(ironGearInventory + '\n')
+            f.write(steelIngotInventory + '\n')
+            f.write(circuitInventory + '\n')
+            f.write(advCircuitInventory + '\n')
+            f.write(refinedCopperInventory + '\n')
+            f.write(engineInventory + '\n')
+            f.write(electricEngineInventory + '\n')
+            f.write(processorInventory + '\n')
+            f.write(computerInventory + '\n')
+            f.write(ironPlateInventory + '\n')
+            f.write(copperPlateInventory + '\n')
+            f.write(steelPlateInventory + '\n')
+            f.write(refinedCopperPlateInventory + '\n')
             pass
           
         #Ends the python script
@@ -85,19 +176,26 @@ def switchToGame():
         global coalInventory
         coalInventory = int(coalInventory)
         if minplu == 1:
-            coalInventory = coalInventory - amount
+            if amount < coalInventory:
+                coalInventory = coalInventory - amount
+            else:
+                coalInventory = str(coalInventory)
+                return "error"
         elif minplu == 2:
             coalInventory = coalInventory + amount
         else:
             print("Error 01")
         coalInventory = str(coalInventory)
         openInventory()
-    
     def updateIron(minplu, amount):
         global ironInventory
         ironInventory = int(ironInventory)
         if minplu == 1:
-            ironInventory = ironInventory - amount
+            if amount < ironInventory:
+                ironInventory = ironInventory - amount
+            else:
+                ironInventory = str(ironInventory)
+                return "error"        
         elif minplu == 2:
             ironInventory = ironInventory + amount
         else:
@@ -108,12 +206,61 @@ def switchToGame():
         global copperInventory
         copperInventory = int(copperInventory)
         if minplu == 1:
-            copperInventory = copperInventory - amount
+            if amount < copperInventory:
+                copperInventory = copperInventory - amount
+            else:
+                copperInventory = str(copperInventory)
+                return "error"
         elif minplu == 2:
             copperInventory = copperInventory + amount
         else:
             print("Error 01")
         copperInventory = str(copperInventory)
+        openInventory()
+    def updateIronIngot(minplu, amount):
+        global ironIngotInventory
+        ironIngotInventory = int(ironIngotInventory)
+        if minplu == 1:
+            if amount <= ironIngotInventory:
+                ironIngotInventory = ironIngotInventory - amount
+            else:
+                ironIngotInventory = str(ironIngotInventory)
+                return "error"        
+        elif minplu == 2:
+            ironIngotInventory = ironIngotInventory + amount
+        else:
+            print("Error 01")
+        ironIngotInventory = str(ironIngotInventory)
+        openInventory()
+    def updateCopperIngot(minplu, amount):
+        global copperIngotInventory
+        copperIngotInventory = int(copperIngotInventory)
+        if minplu == 1:
+            if amount < copperIngotInventory:
+                copperIngotInventory = copperIngotInventory - amount
+            else:
+                copperIngotInventory = str(copperIngotInventory)
+                return "error"        
+        elif minplu == 2:
+            copperIngotInventory = copperIngotInventory + amount
+        else:
+            print("Error 01")
+        copperIngotInventory = str(copperIngotInventory)
+        openInventory()
+    def updateIronGear(minplu, amount):
+        global ironGearInventory
+        ironGearInventory = int(ironGearInventory)
+        if minplu == 1:
+            if amount < ironGearInventory:
+                ironGearInventory = ironGearInventory - amount
+            else:
+                ironGearInventory = str(ironGearInventory)
+                return "error"       
+        elif minplu == 2:
+            ironGearInventory = ironGearInventory + amount
+        else:
+            print("Error 01")
+        ironGearInventory = str(ironGearInventory)
         openInventory()
     
 
@@ -121,12 +268,26 @@ def switchToGame():
     def openInventory():
         #This clears the command line
         call('cls', shell=True)
-
         #This prints what stage you are on and the inventory
         print("You are on stage: " + stage, end='')
         print("You have " + coalInventory + " coal")
         print("You have " + ironInventory + " iron")
         print("You have " + copperInventory + " copper")
+        print("You have " + ironIngotInventory + " iron ingots")
+        print("You have " + copperIngotInventory + " copper ingots")
+        print("You have " + ironGearInventory + " iron gears")
+        print("You have " + steelIngotInventory + " steel ingots")
+        print("You have " + circuitInventory + " circuits")
+        print("You have " + advCircuitInventory + " advanced circuits")
+        print("You have " + refinedCopperInventory + " refined copper")
+        print("You have " + engineInventory + " engines")
+        print("You have " + electricEngineInventory + " electric engines")
+        print("You have " + processorInventory + " processors")
+        print("You have " + computerInventory + " computers")
+        print("You have " + ironPlateInventory + " iron plates")
+        print("You have " + copperPlateInventory + " copper plates")
+        print("You have " + steelPlateInventory + " steel plates")
+        print("You have " + refinedCopperPlateInventory + " refined copper plates")
 
     #This command opens the store
     def openStore():
@@ -139,10 +300,12 @@ def switchToGame():
     #Opening Crafting Interface
     def craftInterface():
         craft = tix.Tk()
-        print(ironInventory)
         #Defining all Crafting Functions
         def craftIronGears():
-            updateIron(1,4)
+            if updateIronIngot(1,4) != "error":
+                updateIronGear(2,1)
+            else:
+                print("Error 02: Not enought items")
                         
 
         #Defining closing of Crafting Interface
