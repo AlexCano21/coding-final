@@ -39,7 +39,7 @@ def file_lengthy(fname):
 
 
 #Reading Saved Game
-with open('save.txt', 'r') as file:
+with open('items.txt', 'r') as file:
     # read a list of lines into data
     data = file.readlines()
 ##################################################################
@@ -66,19 +66,19 @@ coalRar = 3
 #rarity of Copper Ore
 copperRar = 1
 #Iron Spawned in 1 cycle
-ironSpawnRate = round(diff*ironRar*(stage+1)/4)
+ironSpawnRate = round(diff*ironRar)
 #Coal Spawned in 1 cycle
-coalSpawnRate = round(diff*coalRar*(stage+1)/4)
+coalSpawnRate = round(diff*coalRar)
 #Copper Spawned in 1 cycle
-copperSpawnRate = round(diff*copperRar*(stage+1)/4)
+copperSpawnRate = round(diff*copperRar)
 #Furnace Level: Hardcoded for now will be in save game later
 frnlvl = 1
 #Copper smelting in 1 cycle
-copperSmeltRate = round(diff*frnlvl)
+copperSmeltRate = round(diff)
 #Iron smelting in 1 cycle
-ironSmeltRate = round(diff*frnlvl*2)
+ironSmeltRate = round(diff*2)
 #Coal usage for normal furnace in 1 cycle
-coalSmeltRate = round(diff*frnlvl*4)
+coalSmeltRate = round(diff*4)
 
 ##################################################################
 
@@ -90,7 +90,7 @@ def updateIronIngot(minplu, amount):
     #minplu determines if there will be a subtractin or addidtion opperation perfmormed(1 = -   2 = +)
     #amount is the amount that will be added/subtracted
     #opening the gamefile
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         #reading data of the file and saving it in a variable --> data
         data = file.readlines()
     #extreacting the number by getting rid of the \n and converting it into and integer with base 10
@@ -114,12 +114,12 @@ def updateIronIngot(minplu, amount):
     #Here the newly calculated data gets converted to a string and added back into data
     data[4] = str(val) + "\n"
     #Here the file gets opened once again this time in write mode (w)
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         #now the file gets overwritten with the new data
         file.writelines( data ) 
 
 def updateIron(minplu, amount):
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         # read a list of lines into data
         data = file.readlines()
     val = int(data[2].strip("\n"), 10)
@@ -134,11 +134,11 @@ def updateIron(minplu, amount):
         print("Error 01")
     print(val)
     data[2] = str(val) + "\n"
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         file.writelines( data ) 
 
 def updateCoal(minplu, amount):
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         # read a list of lines into data
         data = file.readlines()
     val = int(data[1].strip("\n"), 10)
@@ -153,11 +153,11 @@ def updateCoal(minplu, amount):
         print("Error 01")
     print(val)
     data[1] = str(val) + "\n"
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         file.writelines( data ) 
 
 def updateCopper(minplu, amount):
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         # read a list of lines into data
         data = file.readlines()
     val = int(data[3].strip("\n"), 10)
@@ -172,11 +172,11 @@ def updateCopper(minplu, amount):
         print("Error 01")
     print(val)
     data[3] = str(val) + "\n"
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         file.writelines( data ) 
 
 def updateIronGear(minplu, amount):
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         # read a list of lines into data
         data = file.readlines()
     val = int(data[6].strip("\n"), 10)
@@ -191,11 +191,11 @@ def updateIronGear(minplu, amount):
         print("Error 01")
     print(val)
     data[6] = str(val) + "\n"
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         file.writelines( data ) 
 
 def updateCopperIngot(minplu, amount):
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         # read a list of lines into data
         data = file.readlines()
     val = int(data[5].strip("\n"), 10)
@@ -210,11 +210,11 @@ def updateCopperIngot(minplu, amount):
         print("Error 01")
     print(val)
     data[5] = str(val) + "\n"
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         file.writelines( data ) 
 
 def updateCircuit(minplu, amount):
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         # read a list of lines into data
         data = file.readlines()
     val = int(data[8].strip("\n"), 10)
@@ -229,11 +229,11 @@ def updateCircuit(minplu, amount):
         print("Error 01")
     print(val)
     data[8] = str(val) + "\n"
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         file.writelines( data ) 
 
 def updateSteelIngot(minplu, amount):
-    with open('save.txt', 'r') as file:
+    with open('items.txt', 'r') as file:
         # read a list of lines into data
         data = file.readlines()
     val = int(data[7].strip("\n"), 10)
@@ -248,13 +248,13 @@ def updateSteelIngot(minplu, amount):
         print("Error 01")
     print(val)
     data[7] = str(val) + "\n"
-    with open('save.txt', 'w') as file:
+    with open('items.txt', 'w') as file:
         file.writelines( data ) 
 
 
 def openInventory():
-    print(file_lengthy("save.txt"))
-    for i in range(file_lengthy("save.txt")): 
+    print(file_lengthy("items.txt"))
+    for i in range(file_lengthy("items.txt")): 
         print(data[i].strip("\n"))
 
 
@@ -365,10 +365,14 @@ def spawnerTimer():
     while True:
         x = x +1
         time.sleep(freq)
-        print(x)
-        updateIron(2, ironSpawnRate)
-        updateCoal(2, coalSpawnRate)
-        updateCopper(2, copperSpawnRate)
+        with open('buildings.txt', 'r') as file:
+            data = file.readlines()
+        coalSpawner = int(data[0].strip("\n"), 10)
+        ironSpawner = int(data[1].strip("\n"), 10)
+        copperSpawner = int(data[2].strip("\n"), 10)
+        updateIron(2, ironSpawnRate*ironSpawner)
+        updateCoal(2, coalSpawnRate*coalSpawner)
+        updateCopper(2, copperSpawnRate*copperSpawner)
         if x%4 == 0:
             furnaceTimer()
         if p1.is_alive() == False:
@@ -376,11 +380,14 @@ def spawnerTimer():
 
 #Furnace Timer
 def furnaceTimer():
-    updateIron(1, ironSmeltRate)
-    updateCoal(1, coalSmeltRate)
-    updateCopper(1, copperSmeltRate)
-    updateCopperIngot(2, copperSmeltRate)
-    updateIronIngot(2, ironSmeltRate)
+    with open('buildings.txt', 'r') as file:
+        data = file.readlines()
+    furnaceLevel = int(data[3].strip("\n"), 10)
+    updateIron(1, ironSmeltRate*furnaceLevel)
+    updateCoal(1, coalSmeltRate*furnaceLevel)
+    updateCopper(1, copperSmeltRate*furnaceLevel)
+    updateCopperIngot(2, copperSmeltRate*furnaceLevel)
+    updateIronIngot(2, ironSmeltRate*furnaceLevel)
         
 if __name__=='__main__':
     p1 = Process(target=loop)
