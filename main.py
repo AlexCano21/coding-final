@@ -117,7 +117,6 @@ def updateIronIngot(minplu, amount):
     with open('items.txt', 'w') as file:
         #now the file gets overwritten with the new data
         file.writelines( data ) 
-
 def updateIron(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
@@ -136,7 +135,6 @@ def updateIron(minplu, amount):
     data[2] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
-
 def updateCoal(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
@@ -155,7 +153,6 @@ def updateCoal(minplu, amount):
     data[1] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
-
 def updateCopper(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
@@ -174,7 +171,6 @@ def updateCopper(minplu, amount):
     data[3] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
-
 def updateIronGear(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
@@ -193,7 +189,6 @@ def updateIronGear(minplu, amount):
     data[6] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
-
 def updateCopperIngot(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
@@ -212,7 +207,6 @@ def updateCopperIngot(minplu, amount):
     data[5] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
-
 def updateCircuit(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
@@ -231,7 +225,6 @@ def updateCircuit(minplu, amount):
     data[8] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
-
 def updateSteelIngot(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
@@ -250,6 +243,186 @@ def updateSteelIngot(minplu, amount):
     data[7] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
+def updateRefinedCopper(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[8].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[8] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateAdvCircuit(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[9].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[9] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateEngine(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[10].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[10] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateElectricEngine(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[11].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[11] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateProcessor(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[12].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[12] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateComputer(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[13].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[13] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateIronPlate(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[14].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[14] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateCopperPlate(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[15].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[15] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateSteelPlate(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[16].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[16] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
+def updateRefinedCopperPlate(minplu, amount):
+    with open('items.txt', 'r') as file:
+        # read a list of lines into data
+        data = file.readlines()
+    val = int(data[17].strip("\n"), 10)
+    if minplu == 1:
+        if amount <= val:
+            val = val - amount
+        else:
+            return "error"     
+    elif minplu == 2:
+        val = val + amount
+    else:
+        print("Error 01")
+    print(val)
+    data[17] = str(val) + "\n"
+    with open('items.txt', 'w') as file:
+        file.writelines( data )
 
 
 def openInventory():
@@ -279,12 +452,73 @@ def switchToGame():
                 updateIronGear(2,1)
             else:
                 print("Error 02: Not enought items")
-        
         def craftCircuit():
             if updateCopperIngot(1,3) != "error":
                 updateCircuit(2,1)
             else:
-                print("Error 02: Not enough items")                        
+                print("Error 02: Not enough items")
+        def craftAdvCircuit():
+            if updateRefinedCopper(1,3) != "error":
+                updateAdvCircuit(2,1)
+            else:
+                print("Error 02: Not enough items")
+        def craftIronPlate():
+            if updateIronIngot(1,2) != "error":
+                updateIronPlate(2,1)
+            else:
+                print("Error 02: Not enough items")
+        def craftSteelIngot():
+            if updateSteelIngot(1,2) != "error":
+                updateSteelPlate(2,1)
+            else:
+                print("Error 02: Not enough items")
+        def craftCopperPlate():
+            if updateCopperIngot(1,2) != "error":
+                updateCopperPlate(2,1)
+            else:
+                print("Error 02: Not enough items")
+        def craftRefinedCopperPlate():
+            if updateRefinedCopper(1,2) != "error":
+                updateRefinedCopperPlate(2,1)
+            else:
+                print("Error 02: Not enough items")
+        def craftEngine():
+            if updateIronPlate(1,5) != "error":
+                if updateSteelPlate(1,2) != "error":
+                    updateEngine(2,1)
+                else:
+                    updateIronPlate(2,5)
+                    print("Error 02: Not enough items")
+            else:
+                print("Error 02: Not enough items")
+        def craftElectricEngine():
+            if updateEngine(1,1) != "error":
+                if updateCircuit(1,5) != "error":
+                    updateElectricEngine(2,1)
+                else:
+                    updateEngine(2,1)
+                    print("Error 02: Not enough items")
+            else:
+                print("Error 02: Not enough items")
+        def craftProcessor():
+            if updateAdvCircuit(1,2) != "error":
+                if updateCircuit(1,5) != "error":
+                    updateProcessor(2,1)
+                else:
+                    updateAdvCircuit(2,2)
+                    print("Error 02: Not enough items")
+            else:
+                print("Error 02: Not enough items")
+        def craftComputer():
+            if updateProcessor(1,2) != "error":
+                if updateIronPlate(1,4) != "error":
+                    updateComputer(2,1)
+                else:
+                    updateProcessor(2,2)
+                    print("Error 02: Not enough items")
+            else:
+                print("Error 02: Not enough items")
+                 
     
         #Defining closing of Crafting Interface
         def closeWindow():
@@ -385,9 +619,11 @@ def furnaceTimer():
     furnaceLevel = int(data[3].strip("\n"), 10)
     updateIron(1, ironSmeltRate*furnaceLevel)
     updateCoal(1, coalSmeltRate*furnaceLevel)
-    updateCopper(1, copperSmeltRate*furnaceLevel)
-    updateCopperIngot(2, copperSmeltRate*furnaceLevel)
     updateIronIngot(2, ironSmeltRate*furnaceLevel)
+    if furnaceLevel >= 2:
+        updateCopper(1, copperSmeltRate*furnaceLevel)
+        updateCopperIngot(2, copperSmeltRate*furnaceLevel)
+        updateCoal(1, coalSmeltRate*furnaceLevel)
         
 if __name__=='__main__':
     p1 = Process(target=loop)
