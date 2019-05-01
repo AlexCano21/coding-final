@@ -432,6 +432,52 @@ def openInventory():
     for i in range(file_lengthy("items.txt")): 
         print(data[i].strip("\n"))
 
+def buildingUpgrade(val):
+    if val == 1:
+        if updateIronIngot(1, 100) =! "error":
+            if updateIronGear(1, 10) == "error":
+                updateIronIngot(2, 100)
+                return "error"
+        else:
+            return "error"
+    elif val == 2:
+        if updateCopperIngot(1, 100) =! "error":
+            if updateIronGear(1, 25) == "error":
+                updateCopperIngot(2, 100)
+                return "error"
+            else:
+                if updateCircuit(1, 20) == "error":
+                    updateCopperIngot(2, 100)
+                    updateIronGear(2, 25)
+                    return "error"
+        else:
+            return "error"
+    elif val == 3:
+
+    elif val == 4:
+
+    elif val == 5:
+
+    elif val == 6:
+
+    elif val == 7:
+
+    elif val == 8:
+
+    elif val == 9:
+
+    elif val == 10:
+
+    elif val == 11:
+
+    elif val == 12:
+
+    elif val == 13:
+
+    elif val == 14:
+
+    elif val == 15:
+
 
 #When this command is called it switches to the actual game
 def switchToGame():
@@ -443,7 +489,17 @@ def switchToGame():
 
         #Prints the store
         print("Welcome to the store!")
+
     
+    def upgradeFurnace():
+        with open('buildings.txt', 'r') as file:
+            data = file.readlines()
+        frnlvl = int(data[3].strip("\n"), 10)
+        if buildingUpgrade(frnlvl) =! "error":
+            frnlvl = frnlvl + 1
+            data[14] = str(frnlvl) + "\n"
+            with open('buildings.txt', 'w') as file:
+                file.writelines( data )
     
     #Opening Crafting Interface
     def craftInterface():
