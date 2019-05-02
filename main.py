@@ -433,15 +433,16 @@ def openInventory():
         print(data[i].strip("\n"))
 
 def buildingUpgrade(val):
+    #different values are for different "upgrade stages" 
     if val == 1:
-        if updateIronIngot(1, 100) =! "error":
+        if updateIronIngot(1, 100) != "error":
             if updateIronGear(1, 10) == "error":
                 updateIronIngot(2, 100)
                 return "error"
         else:
             return "error"
     elif val == 2:
-        if updateCopperIngot(1, 100) =! "error":
+        if updateCopperIngot(1, 100) != "error":
             if updateIronGear(1, 25) == "error":
                 updateCopperIngot(2, 100)
                 return "error"
@@ -452,31 +453,31 @@ def buildingUpgrade(val):
                     return "error"
         else:
             return "error"
-    elif val == 3:
+    #elif val == 3:
 
-    elif val == 4:
+    #elif val == 4:
 
-    elif val == 5:
+    #elif val == 5:
 
-    elif val == 6:
+    #elif val == 6:
 
-    elif val == 7:
+    #elif val == 7:
 
-    elif val == 8:
+    #elif val == 8:
 
-    elif val == 9:
+    #elif val == 9:
 
-    elif val == 10:
+    #elif val == 10:
 
-    elif val == 11:
+    #elif val == 11:
 
-    elif val == 12:
+    #elif val == 12:
 
-    elif val == 13:
+    #elif val == 13:
 
-    elif val == 14:
+    #elif val == 14:
 
-    elif val == 15:
+    #elif val == 15:
 
 
 #When this command is called it switches to the actual game
@@ -495,7 +496,7 @@ def switchToGame():
         with open('buildings.txt', 'r') as file:
             data = file.readlines()
         frnlvl = int(data[3].strip("\n"), 10)
-        if buildingUpgrade(frnlvl) =! "error":
+        if buildingUpgrade(frnlvl) != "error":
             frnlvl = frnlvl + 1
             data[14] = str(frnlvl) + "\n"
             with open('buildings.txt', 'w') as file:
@@ -506,11 +507,13 @@ def switchToGame():
         craft = tix.Tk()
         #Defining all Crafting Functions
         def craftIronGears():
+            #taking of 4 iron ingots if no error is returned
             if updateIronIngot(1,4) != "error":
+                #adding one iron gear
                 updateIronGear(2,1)
             else:
+                #if not enough iron is available an error is thrown. This will probably be replaced by a nice visual in the game window
                 print("Error 02: Not enought items")
-        
         def craftCircuit():
             if updateCopperIngot(1,3) != "error":
                 updateCircuit(2,1)
@@ -542,10 +545,14 @@ def switchToGame():
             else:
                 print("Error 02: Not enough items")
         def craftEngine():
+            #taking 5 iron plate if possible(no error)
             if updateIronPlate(1,5) != "error":
+                #taking 2 steel plates if possible
                 if updateSteelPlate(1,2) != "error":
+                    #if enough of both are available one engine is added to the inventory
                     updateEngine(2,1)
                 else:
+                    #if there are not enough steel plates you get the iron plates back
                     updateIronPlate(2,5)
                     print("Error 02: Not enough items")
             else:
