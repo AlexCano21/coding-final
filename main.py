@@ -13,6 +13,7 @@ from tkinter import Button
 
 import time
 import rnd as rnd
+import random
 from multiprocessing import Process
 
 #Import time 
@@ -78,6 +79,8 @@ copperSmeltRate = round(diff)
 ironSmeltRate = round(diff*2)
 #Coal usage for normal furnace in 1 cycle
 coalSmeltRate = round(diff*4)
+#how big the chance is that a random event occurs in a 10 cycles 1:chance --> 1:1000 
+chance = 1
 
 ##################################################################
 
@@ -652,6 +655,24 @@ titleLabel.after(titleScreenTime, switchToGame)
 
 ##################################################################
 
+#picking a random event
+def randomEvent():
+    rndNumber = random.randint(0, 6)
+    if rndNumber == 1:
+        rnd.workerStrike()
+    elif rndNumber == 2:
+        rnd.factoryFire()
+    elif rndNumber == 3:
+        rnd.worldWar()
+    elif rndNumber == 4:
+        rnd.theGreatDepression()
+    elif rndNumber == 5:
+        rnd.theSnap()
+    elif rndNumber == 6:
+        rnd.elonInvests()
+
+
+
 #mainloop running
 def loop():
     root.mainloop()
@@ -673,6 +694,11 @@ def spawnerTimer():
         updateCopper(2, copperSpawnRate*copperSpawner)
         if x%4 == 0:
             furnaceTimer()
+        elif x%10 == 0:
+            print(chance)
+            rndnr = random.randint(0, chance)
+            if rndnr <= 1:
+                randomEvent()
         if p1.is_alive() == False:
             break
 
