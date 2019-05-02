@@ -12,8 +12,7 @@ from tkinter import Button
 
 
 import time
-
-
+import rnd as rnd
 from multiprocessing import Process
 
 #Import time 
@@ -136,7 +135,6 @@ def updateIron(minplu, amount):
     data[0] = str(val) + "\n"
     with open('items.txt', 'w') as file:
         file.writelines( data ) 
-
 def updateCoal(minplu, amount):
     with open('items.txt', 'r') as file:
         # read a list of lines into data
