@@ -6,4 +6,7 @@ def worldWar():
     print("The world falls into total war")
 def theGreatDepression():
     print("The great Depression")
-def 
+def theSnap():
+    print("Snaps half of your resources away")
+def elonInvests():
+    print("Elon Musk invests in your operation, upgrade on buidling of your choosing")
