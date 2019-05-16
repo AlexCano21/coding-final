@@ -509,7 +509,8 @@ def switchToGame():
         with open('buildings.txt', 'r') as file:
             data = file.readlines()
         frnlvl = int(data[3].strip("\n"), 10)
-        if buildingUpgrade(frnlvl+1) != "error":
+        #should be frnlvl + 1 in parenthesis
+        if buildingUpgrade(1) != "error":
             frnlvl = frnlvl + 1
             data[3] = str(frnlvl) + "\n"
             with open('buildings.txt', 'w') as file:
