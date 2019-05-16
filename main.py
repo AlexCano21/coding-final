@@ -518,7 +518,7 @@ def switchToGame():
             furnaceLevel2 = PhotoImage(file=filename)
             furnaceLvl2Label = Label(root, borderwidth="0", image=furnaceLevel2)
             furnaceLvl2Label.image = furnaceLevel2
-            furnaceLvl2Label.place(x=193, y=97)
+            furnaceLvl2Label.place(x=193, y=98)
             if frnlvl == 2:
                 furnace2out1 = PhotoImage(file="furnace2out1.png")
                 furnace2out1Label = Label(root, borderwidth="0", image=furnace2out1)
@@ -556,6 +556,32 @@ def switchToGame():
             with open('buildings.txt', 'r') as file:
                 data = file.readlines()
             frnlvl = int(data[3].strip("\n"), 10)
+    def upgradeIron():
+        with open('buildings.txt', 'r') as file:
+            data = file.readlines()
+        irnlvl = int(data[1].strip("\n"), 10)
+        if buildingUpgrade(1) != "error":
+            irnlvl = irnlvl + 1
+            if irnlvl == 2:
+                ylvl = 98
+                xlvl = 19
+            elif irnlvl == 3:
+                ylvl = 93
+                xlvl = 12
+            elif irnlvl == 4:
+                ylvl = 91
+                xlvl = 11
+            elif irnlvl == 5:
+                ylvl = 90
+                xlvl = 11
+            data[1] = str(irnlvl) + "\n"
+            with open('buildings.txt', 'w') as file:
+                file.writelines( data )
+            filename = "iron" + str(irnlvl) + ".png"
+            ironLevel1 = PhotoImage(file=filename)
+            ironLvl1Label = Label(root, borderwidth="0", image=ironLevel1)
+            ironLvl1Label.image = ironLevel1
+            ironLvl1Label.place(x=xlvl, y=ylvl)
             
             
     
@@ -675,6 +701,22 @@ def switchToGame():
     mainLabel.place(x=0, y=0)
 
     
+    def upgradeCoal():
+        print("")
+    def upgradeBlastFurnace():
+        print("")
+    def reset():
+        with open('buildings.txt', 'r') as file:
+            data = file.readlines()
+        data[0] = "1\n"
+        data[1] = "1\n"
+        data[2] = "0\n"
+        data[3] = "1\n"
+        data[4] = "0\n"
+        data[5] = "0\n"
+        with open('buildings.txt', 'w') as file:
+            file.writelines( data )
+
     #This is for testing out the graphics
     iron2 = Button(root, text="Add Iron level 2", bg='black', fg='white', command=upgradeIron)
     iron2.place(x=258, y=244)
@@ -686,6 +728,8 @@ def switchToGame():
     blastFurnace1.place(x=258, y=195)
     coppperspwn = Button(root, text="Add Copper Spawner level 1", bg='black', fg='white', command=upgradeCopper)
     coppperspwn.place(x=550, y=244)
+    reset = Button(root, text="RESET", bg='black', fg='white', command=reset)
+    reset.place(x=650, y=244)
 
     #Leave game function
     def leave():
