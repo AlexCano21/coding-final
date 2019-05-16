@@ -582,6 +582,35 @@ def switchToGame():
             ironLvl1Label = Label(root, borderwidth="0", image=ironLevel1)
             ironLvl1Label.image = ironLevel1
             ironLvl1Label.place(x=xlvl, y=ylvl)
+    def upgradeCoal():
+        with open('buildings.txt', 'r') as file:
+            data = file.readlines()
+        cllvl = int(data[0].strip("\n"), 10)
+        if buildingUpgrade(1) != "error":
+            cllvl = cllvl + 1
+            data[0] = str(cllvl) + "\n"
+            with open('buildings.txt', 'w') as file:
+                file.writelines( data )
+            filename = "coal" + str(cllvl) + ".png"
+            coalLevel1 = PhotoImage(file=filename)
+            coalLvl1Label = Label(root, borderwidth="0", image=coalLevel1)
+            coalLvl1Label.image = coalLevel1
+            coalLvl1Label.place(x=31, y=19)
+
+    def upgradeBlastFurnace():
+        with open('buildings.txt', 'r') as file:
+            data = file.readlines()
+        blfrnlvl = int(data[4].strip("\n"), 10)
+        if buildingUpgrade(2) != "error":
+            blfrnlvl = blfrnlvl + 1
+            data[4] = str(blfrnlvl) + "\n"
+            with open('buildings.txt', 'w') as file:
+                file.writelines( data )
+            filename = "blastfurnace" + str(blfrnlvl) + ".png"
+            blastFurnaceLevel1 = PhotoImage(file=filename)
+            blastFurnaceLvl1Label = Label(root, borderwidth="0", image=blastFurnaceLevel1)
+            blastFurnaceLvl1Label.image = blastFurnaceLevel1
+            blastFurnaceLvl1Label.place(x=201, y=35)
             
             
     
@@ -701,10 +730,8 @@ def switchToGame():
     mainLabel.place(x=0, y=0)
 
     
-    def upgradeCoal():
-        print("")
-    def upgradeBlastFurnace():
-        print("")
+
+    
     def reset():
         with open('buildings.txt', 'r') as file:
             data = file.readlines()
@@ -714,6 +741,7 @@ def switchToGame():
         data[3] = "1\n"
         data[4] = "0\n"
         data[5] = "0\n"
+        data[6] = "0\n"
         with open('buildings.txt', 'w') as file:
             file.writelines( data )
 
@@ -796,7 +824,30 @@ def randomEvent():
 #mainloop running
 def loop():
     root.mainloop()
-
+#Autocraft Iron Gears
+def autoCraftIronGears(x):
+            #taking of 4 iron ingots if no error is returned
+            if updateIronIngot(1,4*x) != "error":
+                #adding one iron gear
+                updateIronGear(2,1*x)
+            else:
+                #if not enough iron is available an error is thrown. This will probably be replaced by a nice visual in the game window
+                print("Error 02: Not enought items")
+def autoCraftCircuit(x):
+    if updateCopperIngot(1,3*x) != "error":
+        updateCircuit(2,1*x)
+    else:
+        print("Error 02: Not enough items")
+#AutoCrafter
+def autoCrafter():
+    with open('buildings.txt', 'r') as file:
+        data = file.readlines()
+    gearCrafterlvl = int(data[5].strip("\n"), 10)
+    circuitCrafterlvl = int(data[6].strip("\n"), 10)
+    if gearCrafterlvl != 0:
+        autoCraftIronGears(gearCrafterlvl)
+    if circuitCrafterlvl != 0:
+        autoCraftCircuit(circuitCrafterlvl)
 
 #Background Process Timer
 def spawnerTimer():
@@ -812,6 +863,7 @@ def spawnerTimer():
         updateIron(2, ironSpawnRate*ironSpawner)
         updateCoal(2, coalSpawnRate*coalSpawner)
         updateCopper(2, copperSpawnRate*copperSpawner)
+        autoCrafter()
         if x%4 == 0:
             furnaceTimer()
         elif x%10 == 0:
