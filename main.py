@@ -499,44 +499,6 @@ def switchToGame():
         bfurnaceLvl1Label.image = bfurnaceLevel1
         bfurnaceLvl1Label.place(x=201, y=35)
         blastFurnace1.place_forget()
-    def addCopperOne():
-        def addCopperTwo():
-            def addCopperThree():
-                def addCopperFour():
-                    def addCopperFive():
-                        copperLevel5 = PhotoImage(file="copper5.png")
-                        copperLvl5Label = Label(root, borderwidth="0", image=copperLevel5)
-                        copperLvl5Label.image = copperLevel5
-                        copperLvl5Label.place(x=15, y=179)
-                        copper5.place_forget()
-                    copperLevel4 = PhotoImage(file="copper4.png")
-                    copperLvl4Label = Label(root, borderwidth="0", image=copperLevel4)
-                    copperLvl4Label.image = copperLevel4
-                    copperLvl4Label.place(x=15, y=179)
-                    copper4.place_forget()
-                    copper5 = Button(root, text="Add Copper level 5", bg='black', fg='white', command=addCopperFive)
-                    copper5.place(x=258, y=218)
-                copperLevel3 = PhotoImage(file="copper3.png")
-                copperLvl3Label = Label(root, borderwidth="0", image=copperLevel3)
-                copperLvl3Label.image = copperLevel3
-                copperLvl3Label.place(x=15, y=179)
-                copper3.place_forget()
-                copper4 = Button(root, text="Add Copper level 4", bg='black', fg='white', command=addCopperFour)
-                copper4.place(x=258, y=218)
-            copperLevel2 = PhotoImage(file="copper2.png")
-            copperLvl2Label = Label(root, borderwidth="0", image=copperLevel2)
-            copperLvl2Label.image = copperLevel2
-            copperLvl2Label.place(x=15, y=179)
-            copper2.place_forget()
-            copper3 = Button(root, text="Add Copper level 3", bg='black', fg='white', command=addCopperThree)
-            copper3.place(x=258, y=218)
-        copperLevel1 = PhotoImage(file="copper1.png")
-        copperLvl1Label = Label(root, borderwidth="0", image=copperLevel1)
-        copperLvl1Label.image = copperLevel1
-        copperLvl1Label.place(x=23, y=147)
-        copper1.place_forget()
-        copper2 = Button(root, text="Add Copper level 2", bg='black', fg='white', command=addCopperTwo)
-        copper2.place(x=258, y=218)
     def addFuranceTwo():
         def addCopperOne():
             def addCopperTwo():
@@ -789,7 +751,7 @@ def switchToGame():
     furnace2 = Button(root, text="Add Furnace level 2", bg='black', fg='white', command=addFuranceTwo)
     furnace2.place(x=450, y=244)
     blastFurnace1 = Button(root, text="Add Blast Furnace level 1", bg='black', fg='white', command=addBfurnace1)
-    blastFurnace1.place(x=258, y=200)
+    blastFurnace1.place(x=258, y=195)
 
     #Leave game function
     def leave():
